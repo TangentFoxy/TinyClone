@@ -12,6 +12,7 @@ end
 
 local locations = {
   Sun = {
+    parent = "Sun",
     distance = 0,
     orbital_color = { 1, 1, 0.8, 1 },
     orbital_size = 600,
@@ -22,7 +23,7 @@ local locations = {
     parent = "Sun",
     distance = 1, -- in AU from parent
     ground_color = { 0.2, 0.5, 0, 1 },
-    atmosphere_color = { 0.53, 0.81, 0.92, 1 },
+    atmosphere_color = { 0.53, 0.81, 0.92, 0.85 },
     surface_area = 1.4894e8,
     mass = 5.97237e24,
   },
@@ -44,7 +45,7 @@ local locations = {
     parent = "Sun",
     distance = 0.723332,
     ground_color = { 0.6, 0.4, 0, 1 },
-    atmosphere_color = { 224/255, 196/255, 101/255, 1 },
+    atmosphere_color = { 224/255, 196/255, 101/255, 0.95 },
     surface_area = 4.6023e8,
     mass = 4.8675e24,
   },
@@ -52,7 +53,7 @@ local locations = {
     parent = "Sun",
     distance = 1.523679,
     ground_color = { 181/255, 89/255, 69/255, 1 },
-    atmosphere_color = { 1, 143/255, 143/255, 1 },
+    atmosphere_color = { 1, 143/255, 143/255, 0.5 },
     surface_area = 1.447985e8,
     mass = 6.4171e23,
   },
