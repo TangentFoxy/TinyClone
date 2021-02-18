@@ -6,7 +6,7 @@ love.graphics.setDefaultFilter("linear", "nearest", 1)
 local current_location = "Earth"
 local horizontal_scroll = 0
 
-local locations = require "locations"
+local locations = require("locations")
 
 local assets = {
   rocket = { vertical_offset = 0, scale = 1/2 }, -- temporary?
@@ -41,7 +41,7 @@ local vehicles = {
 }
 
 function love.update(dt)
-  require("lovebird").update()
+  require("lib.lovebird").update()
 
   -- horizontal scroll
   if love.keyboard.isDown("left") then
@@ -53,13 +53,18 @@ end
 
 function love.draw()
   local location = locations[current_location]
+  local parent = locations[location.parent]
 
   -- background
   love.graphics.setColor(1, 1, 1, 1)
-  love.graphics.draw(assets.space.image, -location.distance*20 - locations[location.parent].distance*20, 0)
+  love.graphics.draw(assets.space.image, math.max(-1088, -location.distance*20 - parent.distance*20), 0)
 
   -- ground
   if location.ground_color then
+    if location.parent ~= "Sun" then
+      love.graphics.setColor(parent.orbital_color)
+      love.graphics.circle("fill", w/3, h/6, parent.orbital_size - location.distance*20)
+    end
     if location.atmosphere_color then
       love.graphics.setColor(location.atmosphere_color)
       love.graphics.rectangle("fill", 0, 0, w, 2*h/3)
